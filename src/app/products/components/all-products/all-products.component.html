@@ -1,0 +1,21 @@
+<div class="products-wrapper">
+  <div class="products-container">
+    <div class="product-item" *ngFor="let product of products">
+      <div class="image-container sub-containers">
+        <img src="{{ product.image }}" width="100%" height="100%" alt="test" />
+      </div>
+      <div class="product-body-content">
+        <div class="paragraph">
+          <h3>{{ product.newTitle }}</h3>
+          <p>{{ product.newDescription }}</p>
+        </div>
+        <div class="product-functionality">
+          <button class="btn details-btn" (click)="productDetails(product)">
+            Details
+          </button>
+          <div>{{ product.price }} L.E</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

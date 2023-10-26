@@ -1,0 +1,65 @@
+<section class="main-container">
+  <div class="content-wrapper">
+    <div class="images-container content">
+      <div class="main-image">
+        <img src="{{ mainImage }}" alt="" />
+      </div>
+      <div class="subImages-container">
+        <div
+          *ngFor="let image of imagePaths"
+          (click)="imageHandler(image)"
+          class="sub-image"
+        >
+          <img src="{{ image }}" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="description-container content">
+      <div class="description-heading desc-content">
+        <div class="heading-description">
+          <div class="title titles">{{ detailedProduct.title }}</div>
+          <div class="price">{{ detailedProduct.price }} L.E</div>
+        </div>
+      </div>
+      <div class="description-body desc-content">
+        <div class="descriptive-wrapper">
+          <div class="body-heading">
+            <div class="color-title titles">Colors</div>
+            <div class="colors">
+              <div class="color blue"></div>
+              <div class="color green"></div>
+              <div class="color offwhite"></div>
+            </div>
+          </div>
+          <div class="description-wrapper">
+            <div class="description-title titles">Description</div>
+            <div class="product-description">
+              {{ detailedProduct.description }}
+            </div>
+          </div>
+        </div>
+        <div class="description-functionality">
+          <div class="func-wrapper">
+            <button
+              [class]="
+                favoritesToggle
+                  ? 'add-to-favs btn favs-active'
+                  : 'add-to-favs btn'
+              "
+              (click)="favoritesHandler()"
+            >
+              <span>Favorites</span>
+              <i class="fa-solid fa-heart"></i>
+            </button>
+            <button class="rate btn"><i class="fa-solid fa-star"></i></button>
+          </div>
+          <div>
+            <button class="add-to-cart btn">
+              <span>Add</span><i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

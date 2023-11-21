@@ -48,8 +48,6 @@ export class FavoritesComponent implements OnInit {
       'favoraitsProducts',
       JSON.stringify(this.favoritesMenu)
     );
-    // this.sharedService.favoritesCollection.splice(index, 1);
-    // console.log(this.sharedService.favoritesCollection);
   }
   closeModal() {
     this.sharedService.isFavButton = false;

@@ -1,0 +1,40 @@
+<section
+  class="side-cart-wrapper"
+  [ngClass]="sharedService.isCartButton ? 'activeMenu' : ''"
+>
+  <div class="cart-container-wrapper">
+    <div class="side-cart-container">
+      <div class="side-cart-header">
+        <h2 class="cart-heading">Cart</h2>
+        <div class="close" (click)="closeSideMenu()">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+      </div>
+      <div class="side-cart-body">
+        <div class="product-cart">
+          <div class="product" *ngFor="let product of cartsMenu">
+            <h4 style="color: black">
+              {{ product.title }}
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="links-collection">
+        <div class="links">
+          <button class="link-button">Carts Page</button>
+        </div>
+        <div class="links">
+          <button class="link-button">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-togglebuttons
+  [typeClasses]="'cart-toggle'"
+  [btnClasses]="'fa-solid fa-cart-shopping'"
+  (click)="sideOpenHandler()"
+></app-togglebuttons>
+
+<!-- [badgeNumber]="sharedService." -->

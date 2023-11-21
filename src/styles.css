@@ -6,11 +6,29 @@
   margin: 0;
 }
 
-/* body {
-  overflow-x: hidden;
-} */
+body {
+  position: relative;
+}
 
 @font-face {
   font-family: "Sacramento";
   src: url("../src/assets/fonts/Sacramento-Regular.ttf");
+}
+
+::-webkit-scrollbar {
+  margin: 10px;
+  width: 8px;
+  background-color: white;
+}
+::-webkit-scrollbar-track {
+  border-radius: 25px;
+  padding: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #0f857c;
+  width: 6px;
+}
+
+button {
+  font-weight: bold;
 }

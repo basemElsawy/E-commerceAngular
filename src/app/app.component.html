@@ -2,5 +2,14 @@
   <app-header></app-header>
   <div class="wrapper">
     <router-outlet></router-outlet>
+    <div>
+      <app-favorites></app-favorites>
+    </div>
+    <app-carts></app-carts>
   </div>
 </div>
+<div
+  *ngIf="sharedService.isFavButton || sharedService.isCartButton"
+  (click)="sideCloseHandler()"
+  class="overlay"
+></div>

@@ -1,0 +1,57 @@
+<section
+  class="favorites-main-container"
+  [ngClass]="sharedService.isFavButton ? 'activeMenu' : ''"
+>
+  <div class="inside-wrapper">
+    <div class="heading-title">
+      <h2>Favorites</h2>
+      <div (click)="closeModal()" class="close">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </div>
+    </div>
+    <div class="favorites-product">
+      <div
+        class="favorite-prod-card"
+        *ngFor="let favProd of favoritesMenu; let i = index"
+      >
+        <div class="picture-wrapper">
+          <img src="{{ favProd.image }}" alt="" />
+        </div>
+        <div class="favorites-card-body">
+          <div class="card-body-title">
+            <h3>
+              {{ favProd.title }}
+            </h3>
+          </div>
+          <div class="card-body-description">
+            <p>{{ favProd.description }}</p>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="link">
+            <button (click)="removeFavorite(i, favProd)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+          <div class="link">
+            <button (click)="navigateToProd(favProd)">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="links-collection">
+      <div class="links">
+        <button class="link-button">Favorites Page</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-togglebuttons
+  [badgeNumber]="favoritesMenu.length"
+  [typeClasses]="'favorites-toggle'"
+  [btnClasses]="'fa-solid fa-heart'"
+  (click)="sideOpenHandler()"
+></app-togglebuttons>
+<!--  [badgeNumber]="favoritesMenu.length"
+-->

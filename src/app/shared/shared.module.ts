@@ -5,17 +5,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from '../products/products.module';
-import { CartsModule } from '../carts/carts.module';
+// import { CartsModule } from '../carts/carts.module';
+
+import { CartsComponent } from './component/carts/carts.component';
+import { FavoritesComponent } from './component/favorites/favorites.component';
+import { SharedService } from './service/shared.service';
+import { TogglebuttonsComponent } from './component/togglebuttons/togglebuttons.component';
+import { ProductsListComponent } from './component/products-list/products-list.component';
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [
+    HeaderComponent,
+    FavoritesComponent,
+    CartsComponent,
+    TogglebuttonsComponent,
+    ProductsListComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,
     RouterModule,
     HttpClientModule,
     ProductsModule,
-    CartsModule,
   ],
-  exports: [HeaderComponent, ProductsModule],
+  exports: [
+    HeaderComponent,
+    ProductsModule,
+    FavoritesComponent,
+    CartsComponent,
+  ],
+  providers: [SharedService],
 })
 export class SharedModule {}

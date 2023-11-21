@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../service/product.service';
 // import { async } from '@angular/core/testing';
-import { Products } from './ProductsInterface';
+import { Products } from '../../models/ProductsInterface';
 import { Router } from '@angular/router';
-
+import { FavProducts } from '../../models/ProductsInterface';
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
@@ -27,11 +27,19 @@ export class AllProductsComponent implements OnInit {
           description: newDescription,
           price,
           image,
-        }: Products) => {
+          isFavorite,
+        }: FavProducts) => {
           newTitle = newTitle.split(' ').slice(0, 5).join(' ');
           newDescription = newDescription.split(' ').slice(0, 12).join(' ');
 
-          return { id, newTitle, newDescription, price, image };
+          return {
+            id,
+            newTitle,
+            newDescription,
+            price,
+            image,
+            isFavorite: false,
+          };
         }
       );
     });
@@ -39,7 +47,7 @@ export class AllProductsComponent implements OnInit {
 
   productDetails(product: any) {
     // console.log(product.id);
-    console.log('details function worls');
+
     this.router.navigate(['/details/', product.id]);
     // this.router.navigate(['/details/'],);
   }

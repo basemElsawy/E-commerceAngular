@@ -8,4 +8,15 @@ export interface Products {
   newTitle?: string;
   newDescription?: string;
   category: string;
+  itemQunatity?: number;
+}
+
+export interface FavProducts extends Products {
+  isFavorite?: boolean;
+}
+
+export interface CartProducts {
+  product: Products;
+
+  itemQuantity: number;
 }

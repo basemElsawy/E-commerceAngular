@@ -17,24 +17,26 @@
     <div class="description-container content">
       <div class="description-heading desc-content">
         <div class="heading-description">
-          <div class="title titles">{{ detailedProduct.title }}</div>
-          <div class="price">{{ detailedProduct.price }} L.E</div>
+          <div class="title titles">{{ detailedProduct?.title }}</div>
+          <div class="price">{{ detailedProduct?.price }} L.E</div>
+        </div>
+        <div class="body-heading">
+          <div class="color-title titles">Colors</div>
+          <div class="colors">
+            <div class="color blue"></div>
+            <div class="color green"></div>
+            <div class="color offwhite"></div>
+          </div>
         </div>
       </div>
       <div class="description-body desc-content">
         <div class="descriptive-wrapper">
-          <div class="body-heading">
-            <div class="color-title titles">Colors</div>
-            <div class="colors">
-              <div class="color blue"></div>
-              <div class="color green"></div>
-              <div class="color offwhite"></div>
-            </div>
-          </div>
           <div class="description-wrapper">
             <div class="description-title titles">Description</div>
             <div class="product-description">
-              {{ detailedProduct.description }}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+              quis, tempora mollitia totam beatae similique expedita dicta quae.
+              Nisi amet quas ut,
             </div>
           </div>
         </div>
@@ -42,19 +44,42 @@
           <div class="func-wrapper">
             <button
               [class]="
-                favoritesToggle
+                favoriteBtnToggle
                   ? 'add-to-favs btn favs-active'
                   : 'add-to-favs btn'
               "
-              (click)="favoritesHandler()"
+              (click)="favoritesHandler(detailedProduct)"
             >
               <span>Favorites</span>
-              <i class="fa-solid fa-heart"></i>
+              <i
+                [class]="
+                  favoriteBtnToggle
+                    ? 'fa-solid fa-heart'
+                    : 'fa-solid fa-heart-crack'
+                "
+              ></i>
             </button>
             <button class="rate btn"><i class="fa-solid fa-star"></i></button>
           </div>
-          <div>
-            <button class="add-to-cart btn">
+          <div class="add-to-cart-btn">
+            <div class="product-addition">
+              <div class="item-quantity">
+                <div class="quantity-heading">Item Quantity</div>
+              </div>
+              <div class="plus-minus">
+                <div (click)="subtractProduct()" class="operands minus">
+                  <i class="fa-solid fa-minus"></i>
+                </div>
+                <div class="operands number">{{ itemQuantity }}</div>
+                <div (click)="addProduct()" class="operands plus">
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+              </div>
+            </div>
+            <button
+              (click)="addToCart(detailedProduct)"
+              class="add-to-cart btn"
+            >
               <span>Add</span><i class="fa-solid fa-cart-shopping"></i>
             </button>
           </div>

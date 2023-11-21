@@ -5,8 +5,12 @@
         <h2 class="logo">Market</h2>
       </div>
       <ul>
-        <li [routerLink]="['/products']">Products</li>
-        <li [routerLink]="['/carts']">Cart</li>
+        <li [routerLink]="['/products']" routerLinkActive="router-link-active">
+          Products
+        </li>
+        <li [routerLink]="['/carts']" routerLinkActive="router-link-active">
+          Cart
+        </li>
       </ul>
     </div>
   </div>

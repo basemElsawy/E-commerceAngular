@@ -1,0 +1,41 @@
+.hero-section {
+  height: 100vh;
+  background: url(../../../../assets/heroSection-bg.jpg) no-repeat center;
+  background-color: #085852;
+  background-blend-mode: multiply;
+  background-size: cover;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* font-size: 62px; */
+  & h1 {
+    font-size: 58px;
+  }
+  & span {
+    font-family: "Sacramento";
+    font-weight: 500;
+    font-size: 72px;
+  }
+  .text-container {
+    font-size: 32px;
+    text-transform: capitalize;
+  }
+  .hero-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
+.explore-btn {
+  & button {
+    padding: 10px 45px;
+    font-size: 24px;
+    color: white;
+    background-color: #0f857c;
+    border: none;
+    border-radius: 4px;
+  }
+}

@@ -4,8 +4,9 @@ import { AllProductsComponent } from './products/components/all-products/all-pro
 import { ProductsDetailsComponent } from './products/components/products-details/products-details.component';
 import { CartsComponent } from './shared/component/carts/carts.component';
 import { AllProductsCartComponent } from './products/components/all-products-cart/all-products-cart.component';
+import { HomepageComponent } from './products/components/homepage/homepage.component';
 const routes: Routes = [
-  { path: 'products', component: AllProductsComponent },
+  { path: '', component: HomepageComponent },
   { path: 'carts', component: AllProductsCartComponent },
   { path: 'details/:id', component: ProductsDetailsComponent },
   { path: '**', redirectTo: 'products', pathMatch: 'full' },

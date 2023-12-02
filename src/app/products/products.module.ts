@@ -4,9 +4,11 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 import { ProductsDetailsComponent } from './components/products-details/products-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { AllProductsCartComponent } from './components/all-products-cart/all-products-cart.component';
+import { HeroSectionComponent } from './components/hero-section/hero-section.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
-  declarations: [AllProductsComponent, ProductsDetailsComponent, AllProductsCartComponent],
+  declarations: [AllProductsComponent, ProductsDetailsComponent, AllProductsCartComponent, HeroSectionComponent, HomepageComponent],
   imports: [CommonModule],
   exports: [AllProductsComponent, ProductsDetailsComponent],
 })

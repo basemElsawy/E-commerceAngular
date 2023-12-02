@@ -12,10 +12,46 @@
       </div>
       <div class="side-cart-body">
         <div class="product-cart">
-          <div class="product" *ngFor="let product of cartsMenu">
-            <h4 style="color: black">
-              {{ product.title }}
-            </h4>
+          <div
+            class="product"
+            *ngFor="let product of cartsMenu; let idx = index"
+          >
+            <div class="image-heading">
+              <img src="{{ product.product.image }}" alt="" />
+            </div>
+            <div class="cartItem-body">
+              <div>
+                <h5>
+                  {{ product.product.category }}
+                </h5>
+                <p>{{ product.product.title }}</p>
+              </div>
+              <div class="item-edit">
+                <div class="remove-from-cart" (click)="deleteFromCart(idx)">
+                  <i class="fa-solid fa-trash"></i>
+                </div>
+                <div class="plus-minus">
+                  <span class="operands-heading">Item Qty</span>
+                  <div>
+                    <div
+                      (click)="decreaseProdQty(product)"
+                      class="operands minus"
+                    >
+                      <i class="fa-solid fa-minus"></i>
+                    </div>
+                    <div class="operands number">
+                      {{ product.itemQuantity }}
+                    </div>
+                    <div
+                      (click)="increaseProdQty(product)"
+                      class="operands plus"
+                    >
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -32,6 +68,7 @@
 </section>
 
 <app-togglebuttons
+  [badgeNumber]="cartsMenu.length"
   [typeClasses]="'cart-toggle'"
   [btnClasses]="'fa-solid fa-cart-shopping'"
   (click)="sideOpenHandler()"

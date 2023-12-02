@@ -74,7 +74,6 @@ export class ProductsDetailsComponent {
   }
 
   favoritesHandler(choosedProduct: FavProducts): void {
-    // this.favsService.favoritesSubject.next([]);
     const hasFavTest = localStorage.getItem('favoraitsProducts') ? true : false;
     console.log(hasFavTest);
     // this.detailedProduct.isFavorite = true;
@@ -92,19 +91,21 @@ export class ProductsDetailsComponent {
         return;
       } else {
         this.detailedProduct.isFavorite = true;
-        this.favsService.uiFavoritesDisplay.push(choosedProduct);
+
         this.detailedProduct.isFavorite = true;
         favoritesCollection?.push(this.detailedProduct);
         localStorage.setItem(
           'favoraitsProducts',
           JSON.stringify(favoritesCollection)
         );
-        this.favsService.favoritesSubject.next(favoritesCollection);
+        this.favsService.favoritesSubject.next(
+          JSON.parse(localStorage.getItem('favoraitsProducts') || '[]')
+        );
       }
     } else {
       let favoritesCollection: Products[] = [];
       this.detailedProduct.isFavorite = true;
-      this.favsService.uiFavoritesDisplay.push(this.detailedProduct);
+
       this.detailedProduct.isFavorite = true;
       favoritesCollection?.push(this.detailedProduct);
       localStorage.setItem(
@@ -112,7 +113,9 @@ export class ProductsDetailsComponent {
         JSON.stringify(favoritesCollection)
       );
 
-      this.favsService.favoritesSubject.next(favoritesCollection);
+      this.favsService.favoritesSubject.next(
+        JSON.parse(localStorage.getItem('favoraitsProducts') || '[]')
+      );
     }
 
     this.detailedProduct.isFavorite = true;
@@ -153,16 +156,18 @@ export class ProductsDetailsComponent {
           (cartItem) => cartItem.product.id === repeatedItem.product.id
         );
 
-        // let itemIndexQuantity =
-        //   this.itemQuantity - cartItems[repeatedIndex].itemQuantity;
         cartItems[repeatedIndex].itemQuantity += this.itemQuantity;
         localStorage.setItem('cartItem', JSON.stringify(cartItems));
+        let storedData = JSON.parse(localStorage.getItem('cartItem') || '[]');
+        this.favsService.cartsMenuSubject.next(storedData);
         this.itemQuantity = 0;
       } else {
         cartItems = JSON.parse(localStorage.getItem('cartItem') || '[]');
 
         cartItems.push(productRef);
         localStorage.setItem('cartItem', JSON.stringify(cartItems));
+        let storedData = JSON.parse(localStorage.getItem('cartItem') || '[]');
+        this.favsService.cartsMenuSubject.next(storedData);
       }
     } else {
       cartItems = [];
@@ -173,6 +178,8 @@ export class ProductsDetailsComponent {
 
       cartItems.push(productRef);
       localStorage.setItem('cartItem', JSON.stringify(cartItems));
+      let storedData = JSON.parse(localStorage.getItem('cartItem') || '[]');
+      this.favsService.cartsMenuSubject.next(storedData);
       this.itemQuantity = 0;
     }
     this.itemQuantity = 0;
@@ -183,6 +190,8 @@ export class ProductsDetailsComponent {
 
 
 
+        // let itemIndexQuantity =
+        //   this.itemQuantity - cartItems[repeatedIndex].itemQuantity;
 
     // let storedCartItems: Products[] = JSON.parse(
     //   localStorage.getItem('cartItem') || '[]'

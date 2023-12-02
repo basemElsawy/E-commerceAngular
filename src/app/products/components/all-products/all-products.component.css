@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
+  width: 85%;
+  margin: 50px auto 50px;
 }
 .product-item {
   height: 450px;
